@@ -1,0 +1,16 @@
+
+<%= @attraction.name%>  <br> 
+<%= @attraction.nausea_rating%> <br> 
+<%= @attraction.happiness_rating%> <br> 
+<%= @attraction.tickets%> <br> 
+<%= @attraction.min_height%> <br>
+
+<% if !@user.admin %>
+<%= button_to "Go on this ride", user_path(ride_user)%> <br>
+<% end %>
+
+
+<% if @user.admin %>
+<%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+<%= link_to "Back to Rides", attractions_path %> <br>
