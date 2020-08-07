@@ -30,10 +30,10 @@ describe 'Feature Test: User Signup', :type => :feature do
     user_login
     expect(current_path).to eq('/users/1')
     expect(page).to have_content("Mindy")
-    expect(page).to have_content("Mood")
-    expect(page).to have_content("happy")
-    expect(page).to have_content("10")
-    expect(page).to have_content("50")
+    # expect(page).to have_content("Mood")
+    # expect(page).to have_content("happy")
+    # expect(page).to have_content("10")
+    # expect(page).to have_content("50")
   end
 
   it "on log in, successfully adds a session hash" do

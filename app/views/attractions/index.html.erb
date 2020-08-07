@@ -1,0 +1,39 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<% if @user.admin %>
+<%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+
+<table>
+<tr>
+<th>Ride name</th>
+<th>Nauesea Rating</th>
+<th>Happiness Rating</th>
+<th>Minimum Height</th>
+
+<% if !@user.admin %>
+<th>Go on Ride</th>
+<% end %>
+
+<% if @user.admin %>
+<th>Show Ride</th>
+<% end %>
+</tr>
+<% @attractions.each do |a| %>
+<tr>
+<td><%= a.name%>  </td> 
+<td><%= a.nausea_rating%> </td> 
+<td><%= a.happiness_rating%> </td> 
+<td><%= a.min_height%> </td>
+<% if !@user.admin %>
+<td><%= link_to "Go on #{a.name}", attraction_path(a) %> </td>
+<% end %>
+
+<% if @user.admin %>
+<td><%= link_to "Show #{a.name}", attraction_path(a) %></td>
+<% end %>
+</tr>
+<% end %>
+</table>
