@@ -1,0 +1,16 @@
+<p><%= flash[:notice] %></p>
+<h1><%= "ADMIN" if @user.admin %> User: <%= @user.name %></h1>
+<p>
+  <label>Mood: </label><%= @user.mood %>
+</p>
+<p>
+  <label>Tickets: </label>
+  <%= @user.tickets %>
+</p>
+<p>
+  <label>Height: </label>
+  <%= @user.height %>
+</p>
+<p><%= link_to 'See attractions', attractions_path %></p>
+<p><%= link_to 'Log Out', logout_path, method: 'delete' %></p>
+
