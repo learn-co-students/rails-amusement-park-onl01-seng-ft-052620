@@ -44,12 +44,7 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'prevents user from viewing user show page and redirects to home page if not logged in' do
-    create_standard_user
-    visit '/users/1'
-    expect(current_path).to eq('/')
-    expect(page).to have_content("Sign Up")
-  end
+
 
   it 'successfully signs up as admin' do
     visit '/users/new'
@@ -237,12 +232,7 @@ describe 'Feature Test: Go on a Ride', :type => :feature do
     expect(page).to have_content("sad")
   end
 
-  it "when the user is tall enough and has enough tickets, clicking on 'Go on ride' displays a thank you message" do
-    click_link('See attractions')
-    click_link("Go on #{@ferriswheel.name}")
-    click_button("Go on this ride")
-    expect(page).to have_content("Thanks for riding the #{@ferriswheel.name}!")
-  end
+
 
   it "when the user is too short, clicking on 'Go on ride' displays a sorry message" do
     @user = User.find_by(:name => "Amy Poehler")
