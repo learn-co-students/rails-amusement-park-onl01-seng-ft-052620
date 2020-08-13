@@ -1,0 +1,19 @@
+<div class="center">
+    <% if flash[:alert] %>
+      <p id="notice"><%= flash[:alert] %></p>
+    <% end %>
+    
+    <div class="info">
+        <p><strong>Name: </strong><%= @attraction.name %></p>
+        <p><strong>Number of Users: </strong><%= @attraction.num_users %></p>
+        <p><strong>Ticket Requirement: </strong><%= @attraction.tickets %></p>
+        <p><strong>Height Requirement: </strong><%= @attraction.min_height %></p>
+        <p><strong>Nausea Rating: </strong><%= @attraction.nausea_rating %></p>
+        <p><strong>Happiness Rating: </strong><%= @attraction.happiness_rating %></p>
+        <% if is_admin? %>
+          <p><%= link_to "Edit Attraction", edit_attraction_path %></p>
+        <% else %>
+          <p><%= button_to "Go on this ride", ride_attraction_path, method: :post %></p>
+        <% end %>
+    </div>
+</div>
