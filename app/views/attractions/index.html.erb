@@ -1,0 +1,22 @@
+<h1>Listing Attractions</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Tickets</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @attractions.each do |a| %>
+            <tr> 
+                <td><%= a.name %></td>
+                <td><%= a.tickets %></td>
+                <td><%= link_to "#{is_admin? ? "Show": "Go on"} #{a.name}", a %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<p><%= link_to "New Attraction", new_attraction_path %></p>
