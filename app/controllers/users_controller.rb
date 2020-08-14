@@ -30,6 +30,26 @@ class UsersController < ApplicationController
     end
 
     def show_post_ride
+        @attraction = Attraction.find_by_id(session[:ride]["id"])
+        @user = helpers.ride_user
+        session.destroy
+        session[:user_id] = @user.id
+        if @user.tickets >= @attraction.tickets && @user.height >= @attraction.min_height
+        helpers.adjust_user(@user)
+        flash[:notice] = "Thanks for riding the #{@attraction.name}!"
+        render :show
+        elsif @user.tickets < @attraction.tickets && @user.height< @attraction.min_height
+          flash[:notice] ="You are not tall enough to ride the #{@attraction.name}"
+          flash[:notice] +="& You do not have enough tickets to ride the #{@attraction.name}"
+            redirect_to user_path(@user) 
+        elsif @user.height < @attraction.min_height
+        flash[:notice] = "You are not tall enough to ride the #{@attraction.name}"
+        redirect_to user_path(@user) 
+        elsif @user.tickets < @attraction.tickets
+          flash[:notice] ="You do not have enough tickets to ride the #{@attraction.name}"
+          redirect_to user_path(@user)
+        
+        end
     end
 
     private

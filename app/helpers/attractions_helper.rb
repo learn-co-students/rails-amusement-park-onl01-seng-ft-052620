@@ -1,6 +1,7 @@
 module AttractionsHelper
+
     def ride_user
-        User.find_by(id: session[:user_id])
+        User.find_by_id(session[:user_id])
     end
 
     def adjust_user(user)
@@ -9,4 +10,5 @@ module AttractionsHelper
         user.nausea+= @attraction.nausea_rating
         user.save
     end
+    
 end

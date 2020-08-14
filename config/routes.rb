@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  resources :attractions 
-
+  resources :attractions
   get '/signin' => 'sessions#signin'
-  post '/signin' => 'sessions#create'
-  get '/signout' => 'sessions#signout'
-
-  resources :users
+  get '/signout'=>'sessions#signout'
+  post '/signin' => 'sessions#login'
   
 
   root 'sessions#signin'
-end
+  resources :users
+  post '/users/:id' => 'users#show_post_ride'
 
+end
