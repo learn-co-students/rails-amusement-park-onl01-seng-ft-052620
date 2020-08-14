@@ -10,7 +10,7 @@ RSpec.describe Ride, :type => :model do
       :min_height => 32
     )
   }
-
+  
   let(:user) {
     User.create(
       :name => "Mindy",
@@ -21,11 +21,12 @@ RSpec.describe Ride, :type => :model do
       :height => 34
     )
   }
-
+  
   let(:ride) {
     Ride.create(user_id: user.id, attraction_id: attraction.id)
   }
-
+  # rails g migration create_rides user_id:integer attraction_id:integer --no-test-framework
+  
   it "is valid with a user_id and a attraction_id" do
     expect(ride).to be_valid
   end

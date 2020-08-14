@@ -23,6 +23,7 @@ RSpec.describe User, :type => :model do
       :admin => true
     )
   }
+  # rails g migration create_users name:string password:string nausea:integer happiness:integer tickets:integer height:integer admin:boolean --no-test-framework
 
   let(:roller_coaster) {
     Attraction.create(

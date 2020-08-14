@@ -11,6 +11,8 @@ RSpec.describe Attraction, :type => :model do
     )
   }
 
+  # rails g migration create_attractions name:string tickets:integer nausea_rating:integer happiness_rating:integer min_height:integer --no-test-framework
+
   it "is valid with a name, min_height, nausea_rating, happiness_rating, and ticket number" do
     expect(attraction).to be_valid
   end

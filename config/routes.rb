@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :attractions
+  get '/signin' => 'sessions#signin'
+  get '/signout'=>'sessions#signout'
+  post '/signin' => 'sessions#login'
+  
+
+  root 'sessions#signin'
+  resources :users
+  post '/users/:id' => 'users#show_post_ride'
+
 end
