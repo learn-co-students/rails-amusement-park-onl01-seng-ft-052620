@@ -21,7 +21,7 @@ class Ride < ActiveRecord::Base
     end
 
     def missing_ticket_message
-        "You do not have enough tickets to ride this ride"
+        "You do not have enough tickets to ride the #{self.attraction.name}."
     end
 
     def too_short
@@ -29,7 +29,7 @@ class Ride < ActiveRecord::Base
     end
 
     def height_message
-        "You are not tall enough to ride this ride."
+        "You are not tall enough to ride the #{self.attraction.name}."
     end
 
     def go_on_ride
