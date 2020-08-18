@@ -18,6 +18,13 @@
             <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+        <% unless session[:user_id] %>
+          <a class="navbar-brand" href="<%= new_user_path %>"/>Sign Up</a>
+          <a class="navbar-brand" href="<%= signin_path %>"/>Log In</a>
+        <% else %>
+          <%= link_to 'Log Out', {controller: :users, action: :logout}, class: "navbar-brand", method: "delete" %>
+        <% end %>
+        
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -26,7 +33,14 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+    <!-- flash -->
 
+    <% if flash[:alert] %>
+      <% flash[:alert].each do |alert| %>
+        <strong><%= alert %></strong> <br>
+      <% end %>
+    <% end %> 
+    <!-- end of flash -->
     <!-- content -->
     <div class="container"  role="main">
       <%= yield %>
